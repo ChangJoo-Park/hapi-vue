@@ -1,5 +1,7 @@
 # Hapi Vue
 
+**this project based on hapi-vue by Belar**
+
 > Development setup utilising Vue 2 (Webpack HMR + Vue loader) and Hapi (Nodemon) running with Gulp and BrowserSync. It includes CSS extraction (build only), linting (ESlint) and unit testing (Karma, Mocha, Chai, Sinon).
 
 This is the newest version of Hapi Vue, build on Vue 2.0. For Vue 1 check [Hapi Vue Simple](https://github.com/Belar/hapi-vue-simple) or [Hapi Vue Plus](https://github.com/Belar/hapi-vue-plus).
@@ -22,7 +24,7 @@ This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
 ``` bash
 $ npm install -g vue-cli
-$ vue init belar/hapi-vue <project_name>
+$ vue init changjoo-park/hapi-vue <project_name>
 $ cd <project_name>
 ```
 
@@ -59,9 +61,12 @@ npm run build
 node app.js
 ```
 
-Credits:  
-[Vue.js 2](https://vuejs.org/)  
+Credits:
+[Vue 2](https://vuejs.org/)  
+[Vuex](https:/vuex.vuejs.org)
+[Vue-Router](https:/router.vuejs.org)
 [Hapi](http://hapijs.com/)  
 [Gulp](https://gulpjs.com/)  
 [BrowserSync](https://www.browsersync.io/)  
-[Webpack](https://webpack.github.io/)   
+[Webpack](https://webpack.github.io/)  
+[hapi-vue by Belar](https://github.com/Belar/hapi-vue)
