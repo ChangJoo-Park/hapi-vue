@@ -20,7 +20,7 @@
     "hapi": "^16.0.1",
     "inert": "^4.0.0",
     "vue": "^2.1.0",
-    "vue-resource": "^1.0.3"
+    "axios": "^0.15.3"
   },
   "devDependencies": {
     "browser-sync": "^2.17.3",
