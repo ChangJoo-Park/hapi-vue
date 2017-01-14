@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi');
 const Inert = require('inert');
-
+const h2o2 = require('h2o2');
 const server = new Hapi.Server();
 server.connection({
   port: 3000
@@ -14,6 +14,20 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   const WebpackConfig = require('./config/webpack.config.js'); // Webpack config
   const HapiWebpackDevMiddleware = require('hapi-webpack-dev-middleware');
   const HapiWebpackHotMiddleware = require('hapi-webpack-hot-middleware');
+
+  server.register({
+      register: require('h2o2')
+  }, function (err) {
+
+      if (err) {
+          console.log('Failed to load h2o2');
+      }
+
+      server.start(function (err) {
+
+          console.log('Server started at: ' + server.info.uri);
+      });
+  });
 
   server.register([{
     register: HapiWebpackDevMiddleware,
@@ -92,13 +106,25 @@ server.register([Inert], function (err) {
     }
   });
 
-  server.route({
-    method: 'GET',
-    path: '/{path*}',
-    handler: function (request, reply) {
-      reply.file('./public/index.html');
-    }
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    server.route({
+      method: 'GET',
+      path: '/{path*}',
+      handler: {
+        proxy: {
+          uri: 'http://localhost:3000/'
+        }
+      }
+    });
+  } else {
+    server.route({
+      method: 'GET',
+      path: '/{path*}',
+      handler: function (request, reply) {
+        reply.file('./public/index.html');
+      }
+    });
+  }
 });
 
 server.start((err) => {

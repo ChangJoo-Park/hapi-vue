@@ -3,11 +3,17 @@
     <h1>\{{ msg }}</h1>
     <button class="button" v-on:click="helloCall()">Call API</button>
     <p>API says: \{{ api }}</p>
+    <router-link :to="{ name: 'home-page' }">Home</router-link>
+    <router-link :to="{ name: 'about-page' }">About</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import store from './vuex/store'
+
 export default {
+  store,
   data: function() {
     return {
       // note: changing this line won't causes changes
